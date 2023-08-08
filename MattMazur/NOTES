@@ -1,0 +1,60 @@
+
+ Hoorah! 3 May 2023 - a real neural-network written completely in shell
+ This is a working implementation of a text-book example found here:
+ https://mattmazur.com/2015/03/17/a-step-by-step-backpropagation-example/
+ Verified using the authors from-scratch python example here:
+ https://github.com/mattm/simple-neural-network/blob/master/neural-network.py
+
+ To see the proof that this works, first run the MattMazur's original 
+ reference implementation, written in python3:
+ 'python3 ./neural-network.py'
+ output:
+ 0 0.291027774
+ 1 0.283547133
+ 2 0.275943289
+ 3 0.268232761
+ 4 0.260434393
+ 5 0.252569176
+ 6 0.244659999
+ 7 0.236731316
+ 8 0.228808741
+ 9 0.220918592
+
+ Then, run our implementation, written in shell
+ 'dash ./mm-train.06.sh -s9 -e11 -l0.5 -q 0.05 0.1 0.01 0.99'
+ output:
+ Etotal=0.298371107
+ Etotal=0.291027773
+ Etotal=0.283547132
+ Etotal=0.275943287
+ Etotal=0.268232761
+ Etotal=0.260434392
+ Etotal=0.252569176
+ Etotal=0.244659999
+ Etotal=0.236731316
+ Etotal=0.228808740
+ Etotal=0.220918592
+
+ As can be seen, we're getting exactly the same output at most points. The minor
+ differences at some points is due to our calculator (iq) not rounding, where python does.
+ I've altered Matt's python to only run 10 epochs, in order to easily see that
+ everything is functioning.
+ 
+ The original python script was set to run 10,000 epochs. Running our mm-train.sh
+ for 10,001 epochs actually achieves the same result +-1ulp.
+ 
+ Thanks to Matt Mazur for his excellent tutorial which contained just enough bread
+ crumbs to follow, so that I could implement this from scratch in shell with 'iq'.
+ This proof-of-concept is a completely hard-coded 2x2x2 network.
+ Based on this success, I immediately began implementing a more generalized,
+ daynamically-coded mini-framework for creating small neural networks.
+ 
+ Please see the new project, iqANN, or the iQalc calculator, both found under:
+ https://github.com/ShellCanToo
+ 
+ Gilbert Ashley 
+ email: perceptronic@proton.me
+ Subject Line: iQalc
+ 
+ 
+ 
